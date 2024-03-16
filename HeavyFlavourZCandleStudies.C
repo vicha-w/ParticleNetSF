@@ -311,7 +311,7 @@ TH1D *h1DHistoFrom2DTemplates(TString path2file,TString h2dname, TString name, d
 
   TFile *f2d = TFile::Open(path2file,"READONLY");
   TH2D  *h2d = (TH2D*)f2d->Get(h2dname); h2d->SetDirectory(0);
-  TH1D  *h1d = h2d->ProjectionX("h1d_"+h2dname,h2d->GetYaxis()->FindBin(ymin),h2d->GetYaxis()->FindBin(ymax),"e"); h1d->SetDirectory(0);
+  TH1D  *h1d = h2d->ProjectionX("h1d_"+h2dname,h2d->GetYaxis()->FindBin(ymin),h2d->GetYaxis()->FindBin(ymax)-1,"e"); h1d->SetDirectory(0);
   h1d->SetName(h2dname+"_"+name);
   h1d->SetLineColor(color);
   if (isdata) {
